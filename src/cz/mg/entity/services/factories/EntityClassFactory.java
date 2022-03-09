@@ -6,8 +6,8 @@ import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Value;
 import cz.mg.collections.list.List;
-import cz.mg.entity.EntityClass;
-import cz.mg.entity.EntityField;
+import cz.mg.entity.utilities.EntityClass;
+import cz.mg.entity.utilities.EntityField;
 import cz.mg.entity.services.validators.EntityClassValidator;
 
 import java.lang.reflect.Method;
@@ -19,6 +19,7 @@ public @Service class EntityClassFactory {
         if(instance == null) {
             instance = new EntityClassFactory();
             instance.entityFieldFactory = EntityFieldFactory.getInstance();
+            instance.entityClassValidator = EntityClassValidator.getInstance();
         }
         return instance;
     }

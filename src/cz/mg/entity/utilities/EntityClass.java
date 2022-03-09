@@ -1,10 +1,12 @@
-package cz.mg.entity;
+package cz.mg.entity.utilities;
 
 import cz.mg.annotations.classes.Utility;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Part;
 import cz.mg.collections.list.List;
+
+import java.lang.reflect.Proxy;
 
 @SuppressWarnings("rawtypes")
 public @Utility class EntityClass {
@@ -30,7 +32,11 @@ public @Utility class EntityClass {
 
     public @Mandatory Object newInstance() {
         if(clazz.isInterface()) {
-            return new EntityProxy(this);
+            return Proxy.newProxyInstance(
+                    clazz.getClassLoader(),
+                    new Class[]{ clazz },
+                    new EntityProxy(this)
+            );
         } else {
             try {
                 //noinspection unchecked

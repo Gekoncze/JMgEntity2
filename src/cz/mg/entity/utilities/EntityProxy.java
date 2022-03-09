@@ -1,4 +1,4 @@
-package cz.mg.entity;
+package cz.mg.entity.utilities;
 
 import cz.mg.annotations.classes.Utility;
 import cz.mg.annotations.requirement.Mandatory;

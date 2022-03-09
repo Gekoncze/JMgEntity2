@@ -2,7 +2,7 @@ package cz.mg.entity.services.factories;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.entity.EntityField;
+import cz.mg.entity.utilities.EntityField;
 import cz.mg.entity.services.validators.EntityFieldValidator;
 
 import java.lang.reflect.Method;
