@@ -23,10 +23,14 @@ public @Service class EntityFieldFactory {
     private EntityFieldFactory() {
     }
 
-    public @Mandatory EntityField create(@Mandatory Class<?> clazz, @Mandatory String fieldName) {
+    public @Mandatory EntityField create(
+            @Mandatory Class<?> clazz,
+            @Mandatory String fieldName,
+            @Mandatory Class<?> fieldType
+    ) {
         try {
             Method getter = clazz.getMethod("get" + fieldName);
-            Method setter = clazz.getMethod("set" + fieldName);
+            Method setter = clazz.getMethod("set" + fieldName, fieldType);
             entityFieldValidator.validateGetter(getter);
             entityFieldValidator.validateSetter(setter);
             return new EntityField(getter, setter);

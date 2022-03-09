@@ -6,6 +6,7 @@ import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Value;
 import cz.mg.collections.list.List;
+import cz.mg.entity.services.validators.EntityInterfaceValidator;
 import cz.mg.entity.utilities.EntityClass;
 import cz.mg.entity.utilities.EntityField;
 import cz.mg.entity.services.validators.EntityClassValidator;
@@ -20,18 +21,24 @@ public @Service class EntityClassFactory {
             instance = new EntityClassFactory();
             instance.entityFieldFactory = EntityFieldFactory.getInstance();
             instance.entityClassValidator = EntityClassValidator.getInstance();
+            instance.entityInterfaceValidator = EntityInterfaceValidator.getInstance();
         }
         return instance;
     }
 
     private EntityFieldFactory entityFieldFactory;
     private EntityClassValidator entityClassValidator;
+    private EntityInterfaceValidator entityInterfaceValidator;
 
     private EntityClassFactory() {
     }
 
     public @Mandatory EntityClass create(@Mandatory Class<?> clazz) {
-        entityClassValidator.validate(clazz);
+        if(clazz.isInterface()) {
+            entityInterfaceValidator.validate(clazz);
+        } else {
+            entityClassValidator.validate(clazz);
+        }
 
         List<EntityField> fields = new List<>();
         for(Method method : clazz.getMethods()) {
@@ -41,7 +48,13 @@ public @Service class EntityClassFactory {
             boolean hasValueAnnotation = method.isAnnotationPresent(Value.class);
             boolean hasAnnotation = hasLinkAnnotation || hasPartAnnotation || hasValueAnnotation;
             if(isGetter && hasAnnotation){
-                fields.addLast(entityFieldFactory.create(clazz, method.getName()));
+                fields.addLast(
+                    entityFieldFactory.create(
+                        clazz,
+                        method.getName().substring(3),
+                        method.getReturnType()
+                    )
+                );
             }
         }
         return new EntityClass(clazz, fields);

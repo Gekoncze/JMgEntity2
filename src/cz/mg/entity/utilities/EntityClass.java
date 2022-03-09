@@ -30,9 +30,10 @@ public @Utility class EntityClass {
         return clazz.getSimpleName();
     }
 
-    public @Mandatory Object newInstance() {
+    public <T> @Mandatory T newInstance() {
         if(clazz.isInterface()) {
-            return Proxy.newProxyInstance(
+            //noinspection unchecked
+            return (T) Proxy.newProxyInstance(
                     clazz.getClassLoader(),
                     new Class[]{ clazz },
                     new EntityProxy(this)
@@ -40,7 +41,7 @@ public @Utility class EntityClass {
         } else {
             try {
                 //noinspection unchecked
-                return clazz.getConstructor().newInstance();
+                return (T) clazz.getConstructor().newInstance();
             } catch(ReflectiveOperationException e) {
                 throw new RuntimeException(e);
             }

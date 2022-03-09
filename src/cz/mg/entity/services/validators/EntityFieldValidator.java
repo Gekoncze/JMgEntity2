@@ -36,6 +36,10 @@ public @Service class EntityFieldValidator {
             throw new IllegalArgumentException("Getter must have return type.");
         }
 
+        if(method.getReturnType().isPrimitive()) {
+            throw new IllegalArgumentException("Getter return type must not be primitive.");
+        }
+
         boolean hasLinkAnnotation = method.isAnnotationPresent(Link.class);
         boolean hasPartAnnotation = method.isAnnotationPresent(Part.class);
         boolean hasValueAnnotation = method.isAnnotationPresent(Value.class);
@@ -46,13 +50,17 @@ public @Service class EntityFieldValidator {
     }
 
     public void validateSetter(@Mandatory Method method) {
-        boolean isNameValid = method.getName().startsWith("get");
+        boolean isNameValid = method.getName().startsWith("set");
         if(!isNameValid) {
             throw new IllegalArgumentException("Invalid setter name " + method.getName() + ".");
         }
 
         if(method.getParameterCount() != 1) {
             throw new IllegalArgumentException("Setter must have exactly one parameter.");
+        }
+
+        if(method.getParameterTypes()[0].isPrimitive()) {
+            throw new IllegalArgumentException("Setter parameter type must not be primitive.");
         }
 
         if(!method.getReturnType().equals(Void.TYPE)) {

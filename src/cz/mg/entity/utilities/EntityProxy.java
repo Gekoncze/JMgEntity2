@@ -22,11 +22,12 @@ public @Utility class EntityProxy implements InvocationHandler {
     @Override
     public @Optional Object invoke(@Mandatory Object proxy, @Mandatory Method method, Object[] args) {
         if(method.getName().startsWith("get")) {
-            return map.get(method.getName().substring(3));
+            return map.getOrDefault(method.getName().substring(3), null);
         }
 
         if(method.getName().startsWith("set")) {
-            return map.get(method.getName().substring(3));
+            map.set(method.getName().substring(3), args[0]);
+            return null;
         }
 
         if(method.getName().equals("equals")) {

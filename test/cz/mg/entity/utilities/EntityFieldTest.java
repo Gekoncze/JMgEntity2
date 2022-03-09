@@ -8,11 +8,16 @@ import java.lang.reflect.Method;
 
 public @Test class EntityFieldTest {
     public static void main(String[] args) {
-        testConstructor();
-        testGetName();
+        System.out.print("Running " + EntityFieldTest.class.getSimpleName() + " ... ");
+
+        EntityFieldTest test = new EntityFieldTest();
+        test.testConstructor();
+        test.testGetName();
+
+        System.out.println("OK");
     }
 
-    private static void testConstructor() {
+    private void testConstructor() {
         Assert.assertExceptionNotThrown(() -> {
             Method getMethod = TestEntityClass.class.getMethod("getFoo");
             Method setMethod = TestEntityClass.class.getMethod("setFoo", String.class);
@@ -24,7 +29,7 @@ public @Test class EntityFieldTest {
         });
     }
 
-    private static void testGetName() {
+    private void testGetName() {
         Assert.assertExceptionNotThrown(() -> {
             Method getMethod = TestEntityClass.class.getMethod("getFoo");
             Method setMethod = TestEntityClass.class.getMethod("setFoo", String.class);
