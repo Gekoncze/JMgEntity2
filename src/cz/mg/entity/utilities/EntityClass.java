@@ -34,9 +34,9 @@ public @Utility class EntityClass {
         if(clazz.isInterface()) {
             //noinspection unchecked
             return (T) Proxy.newProxyInstance(
-                    clazz.getClassLoader(),
-                    new Class[]{ clazz },
-                    new EntityProxy(this)
+                clazz.getClassLoader(),
+                new Class[]{ clazz },
+                new EntityProxy(this)
             );
         } else {
             try {

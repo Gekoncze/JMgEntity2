@@ -21,23 +21,29 @@ public @Utility class EntityProxy implements InvocationHandler {
 
     @Override
     public @Optional Object invoke(@Mandatory Object proxy, @Mandatory Method method, Object[] args) {
-        if(method.getName().startsWith("get")) {
+        if (method.getName().startsWith("get")) {
             return map.getOrDefault(method.getName().substring(3), null);
         }
 
-        if(method.getName().startsWith("set")) {
+        if (method.getName().startsWith("set")) {
             map.set(method.getName().substring(3), args[0]);
             return null;
         }
 
-        if(method.getName().equals("equals")) {
+        if (method.getName().equals("equals")) {
             return proxy == args[0];
         }
 
-        if(method.getName().equals("hashCode")) {
+        if (method.getName().equals("hashCode")) {
             return Objects.hashCode(this);
         }
 
-        throw new UnsupportedOperationException("Unsupported method call " + method.getName() + " for class " + entityClass.getName());
+        if (method.getName().equals("toString")) {
+            return Objects.toString(this);
+        }
+
+        throw new UnsupportedOperationException(
+            "Unsupported method call " + method.getName() + " for class " + entityClass.getName()
+        );
     }
 }
