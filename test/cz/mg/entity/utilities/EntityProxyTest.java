@@ -16,6 +16,7 @@ public @Test class EntityProxyTest {
         test.testEquals();
         test.testHashCode();
         test.testToString();
+        test.testGetClass();
 
         System.out.println("OK");
     }
@@ -114,6 +115,13 @@ public @Test class EntityProxyTest {
                 Object.class.getMethod("toString"),
                 new Object[]{}
             ));
+        });
+    }
+
+    private void testGetClass() {
+        Assert.assertExceptionNotThrown(() -> {
+            TestEntityInterface testEntity = TestEntityInterface.entity.newInstance();
+            Assert.assertNotNull(testEntity.getClass());
         });
     }
 }
