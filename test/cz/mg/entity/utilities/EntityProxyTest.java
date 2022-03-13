@@ -14,6 +14,8 @@ public @Test class EntityProxyTest {
         EntityProxyTest test = new EntityProxyTest();
         test.testGetAndSet();
         test.testEquals();
+        test.testHashCode();
+        test.testToString();
 
         System.out.println("OK");
     }
