@@ -17,7 +17,7 @@ public @Service class EntityClassFactory {
     private static EntityClassFactory instance;
 
     public static EntityClassFactory getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new EntityClassFactory();
             instance.entityFieldFactory = EntityFieldFactory.getInstance();
             instance.entityClassValidator = EntityClassValidator.getInstance();
@@ -41,7 +41,7 @@ public @Service class EntityClassFactory {
         }
 
         List<EntityField> fields = new List<>();
-        for(Method method : clazz.getMethods()) {
+        for (Method method : clazz.getMethods()) {
             boolean isGetter = method.getName().startsWith("get");
             boolean hasLinkAnnotation = method.isAnnotationPresent(Link.class);
             boolean hasPartAnnotation = method.isAnnotationPresent(Part.class);

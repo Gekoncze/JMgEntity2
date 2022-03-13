@@ -11,7 +11,7 @@ public @Service class EntityFieldFactory {
     private static EntityFieldFactory instance;
 
     public static EntityFieldFactory getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new EntityFieldFactory();
             instance.entityFieldValidator = EntityFieldValidator.getInstance();
         }
