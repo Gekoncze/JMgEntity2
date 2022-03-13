@@ -1,6 +1,7 @@
 package cz.mg.entity;
 
 import cz.mg.annotations.classes.Test;
+import cz.mg.entity.services.factories.EntityClassFactoryTest;
 import cz.mg.entity.utilities.EntityClassTest;
 import cz.mg.entity.utilities.EntityFieldTest;
 import cz.mg.entity.utilities.EntityProxyTest;
@@ -10,5 +11,7 @@ public @Test class AllTests {
         EntityFieldTest.main(args);
         EntityClassTest.main(args);
         EntityProxyTest.main(args);
+
+        EntityClassFactoryTest.main(args);
     }
 }

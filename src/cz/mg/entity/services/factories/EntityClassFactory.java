@@ -6,6 +6,8 @@ import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Value;
 import cz.mg.collections.list.List;
+import cz.mg.collections.services.ListSorter;
+import cz.mg.collections.utilities.OrderFunctions;
 import cz.mg.entity.services.validators.EntityInterfaceValidator;
 import cz.mg.entity.utilities.EntityClass;
 import cz.mg.entity.utilities.EntityField;
@@ -22,6 +24,7 @@ public @Service class EntityClassFactory {
             instance.entityFieldFactory = EntityFieldFactory.getInstance();
             instance.entityClassValidator = EntityClassValidator.getInstance();
             instance.entityInterfaceValidator = EntityInterfaceValidator.getInstance();
+            instance.listSorter = ListSorter.getInstance();
         }
         return instance;
     }
@@ -29,6 +32,7 @@ public @Service class EntityClassFactory {
     private EntityFieldFactory entityFieldFactory;
     private EntityClassValidator entityClassValidator;
     private EntityInterfaceValidator entityInterfaceValidator;
+    private ListSorter listSorter;
 
     private EntityClassFactory() {
     }
@@ -57,6 +61,10 @@ public @Service class EntityClassFactory {
                 );
             }
         }
-        return new EntityClass(clazz, fields);
+
+        return new EntityClass(clazz, listSorter.sortCopy(
+            fields,
+            (a, b) -> OrderFunctions.nullSafe(a, b, (aa, bb) -> aa.getName().compareTo(bb.getName()))
+        ));
     }
 }

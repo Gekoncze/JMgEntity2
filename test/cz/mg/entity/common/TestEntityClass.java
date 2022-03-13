@@ -8,8 +8,8 @@ import cz.mg.entity.utilities.EntityClass;
 public @Entity class TestEntityClass {
     public static EntityClass entity = EntityClassFactory.getInstance().create(TestEntityClass.class);
 
-    private String foo;
-    private String bar;
+    private @Value String foo;
+    private @Value String bar;
 
     public TestEntityClass() {
     }
