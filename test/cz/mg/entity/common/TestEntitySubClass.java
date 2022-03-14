@@ -13,6 +13,7 @@ public @Entity class TestEntitySubClass extends TestEntityClass {
     public TestEntitySubClass() {
     }
 
+    @Value
     public String getFooBar() {
         return fooBar;
     }
