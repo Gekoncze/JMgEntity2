@@ -8,10 +8,9 @@ public @Service class EntityInterfaceValidator {
     private static EntityInterfaceValidator instance;
 
     public static EntityInterfaceValidator getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new EntityInterfaceValidator();
         }
-
         return instance;
     }
 
