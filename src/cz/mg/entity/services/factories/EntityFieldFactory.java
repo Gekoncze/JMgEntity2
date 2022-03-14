@@ -29,13 +29,12 @@ public @Service class EntityFieldFactory {
             @Mandatory Class<?> fieldType
     ) {
         try {
+            entityFieldValidator.validate(clazz, fieldName, fieldType);
             Method getter = clazz.getMethod("get" + fieldName);
             Method setter = clazz.getMethod("set" + fieldName, fieldType);
-            entityFieldValidator.validateGetter(getter);
-            entityFieldValidator.validateSetter(setter);
             return new EntityField(getter, setter);
         } catch (ReflectiveOperationException e) {
-            throw new UnsupportedOperationException(e);
+            throw new RuntimeException(e);
         }
     }
 }

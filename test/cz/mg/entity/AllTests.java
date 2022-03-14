@@ -4,6 +4,7 @@ import cz.mg.annotations.classes.Test;
 import cz.mg.entity.services.factories.EntityClassFactoryTest;
 import cz.mg.entity.services.factories.EntityFieldFactoryTest;
 import cz.mg.entity.services.validators.EntityClassValidatorTest;
+import cz.mg.entity.services.validators.EntityFieldValidatorTest;
 import cz.mg.entity.services.validators.EntityInterfaceValidatorTest;
 import cz.mg.entity.utilities.EntityClassTest;
 import cz.mg.entity.utilities.EntityFieldTest;
@@ -19,6 +20,7 @@ public @Test class AllTests {
         EntityFieldFactoryTest.main(args);
 
         EntityClassValidatorTest.main(args);
+        EntityFieldValidatorTest.main(args);
         EntityInterfaceValidatorTest.main(args);
     }
 }

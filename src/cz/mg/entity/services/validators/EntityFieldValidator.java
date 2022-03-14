@@ -21,7 +21,22 @@ public @Service class EntityFieldValidator {
     private EntityFieldValidator() {
     }
 
-    public void validateGetter(@Mandatory Method method) {
+    public void validate(
+        @Mandatory Class<?> clazz,
+        @Mandatory String fieldName,
+        @Mandatory Class<?> fieldType
+    ) {
+        try {
+            Method getter = clazz.getMethod("get" + fieldName);
+            Method setter = clazz.getMethod("set" + fieldName, fieldType);
+            validateGetter(getter);
+            validateSetter(setter);
+        } catch (ReflectiveOperationException e) {
+            throw new IllegalArgumentException("Could not find field '" + fieldName + "' in class '" + clazz.getSimpleName() + "'.", e);
+        }
+    }
+
+    private void validateGetter(@Mandatory Method method) {
         boolean isNameValid = method.getName().startsWith("get");
         if (!isNameValid) {
             throw new IllegalArgumentException("Invalid getter name " + method.getName() + ".");
@@ -48,7 +63,7 @@ public @Service class EntityFieldValidator {
         }
     }
 
-    public void validateSetter(@Mandatory Method method) {
+    private void validateSetter(@Mandatory Method method) {
         boolean isNameValid = method.getName().startsWith("set");
         if (!isNameValid) {
             throw new IllegalArgumentException("Invalid setter name " + method.getName() + ".");
