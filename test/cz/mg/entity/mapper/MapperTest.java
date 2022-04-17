@@ -6,8 +6,13 @@ public @Test class MapperTest {
     public static void main(String[] args) {
         System.out.print("Running " + MapperTest.class.getSimpleName() + " ... ");
 
-        // TODO
+        MapperTest test = new MapperTest();
+        test.testMapping();
 
         System.out.println("OK");
+    }
+
+    private void testMapping() {
+        // TODO
     }
 }

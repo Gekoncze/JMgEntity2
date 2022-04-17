@@ -1,6 +1,7 @@
 package cz.mg.entity;
 
 import cz.mg.annotations.classes.Test;
+import cz.mg.entity.mapper.MapperFactoryTest;
 import cz.mg.entity.mapper.MapperTest;
 import cz.mg.entity.mapper.collection.ListObjectMapperTest;
 import cz.mg.entity.mapper.structure.EntityObjectMapperTest;
@@ -30,12 +31,13 @@ public @Test class AllTests {
         EntityFieldValidatorTest.main(args);
         EntityInterfaceValidatorTest.main(args);
 
-        MapperTest.main(args);
         ListObjectMapperTest.main(args);
         BooleanObjectMapperTest.main(args);
         IntegerObjectMapperTest.main(args);
         StringObjectMapperTest.main(args);
         EnumObjectMapperTest.main(args);
         EntityObjectMapperTest.main(args);
+        MapperTest.main(args);
+        MapperFactoryTest.main(args);
     }
 }
