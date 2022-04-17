@@ -3,6 +3,9 @@ package cz.mg.entity;
 import cz.mg.annotations.classes.Test;
 import cz.mg.entity.mapper.MapperTest;
 import cz.mg.entity.mapper.collection.ListObjectMapperTest;
+import cz.mg.entity.mapper.value.BooleanObjectMapperTest;
+import cz.mg.entity.mapper.value.IntegerObjectMapperTest;
+import cz.mg.entity.mapper.value.StringObjectMapperTest;
 import cz.mg.entity.services.factories.EntityClassFactoryTest;
 import cz.mg.entity.services.factories.EntityFieldFactoryTest;
 import cz.mg.entity.services.validators.EntityClassValidatorTest;
@@ -27,5 +30,8 @@ public @Test class AllTests {
 
         MapperTest.main(args);
         ListObjectMapperTest.main(args);
+        BooleanObjectMapperTest.main(args);
+        IntegerObjectMapperTest.main(args);
+        StringObjectMapperTest.main(args);
     }
 }
