@@ -6,6 +6,7 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.collections.list.List;
 import cz.mg.entity.mapper.collection.ListObjectMapper;
 import cz.mg.entity.mapper.value.BooleanObjectMapper;
+import cz.mg.entity.mapper.value.EnumObjectMapper;
 import cz.mg.entity.mapper.value.IntegerObjectMapper;
 import cz.mg.entity.mapper.value.StringObjectMapper;
 import cz.mg.entity.services.factories.EntityClassFactory;
@@ -28,7 +29,11 @@ public @Service class MapperFactory {
     private MapperFactory() {
     }
 
-    public <T> @Mandatory Mapper<T> create(@Mandatory List<Class<?>> classes){
+    public <T> @Mandatory Mapper<T> create(Class<?>... classes) {
+        return create(new List<>(classes));
+    }
+
+    public <T> @Mandatory Mapper<T> create(@Mandatory List<Class<?>> classes) {
         List<ObjectMapper> objectMappers = new List<>();
 
         objectMappers.addLast(new BooleanObjectMapper());

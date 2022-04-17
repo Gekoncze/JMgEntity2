@@ -2,7 +2,6 @@ package cz.mg.entity.mapper.value;
 
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
-import cz.mg.entity.mapper.ValueObjectMapper;
 
 import java.util.Objects;
 

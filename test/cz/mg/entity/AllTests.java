@@ -4,6 +4,7 @@ import cz.mg.annotations.classes.Test;
 import cz.mg.entity.mapper.MapperTest;
 import cz.mg.entity.mapper.collection.ListObjectMapperTest;
 import cz.mg.entity.mapper.value.BooleanObjectMapperTest;
+import cz.mg.entity.mapper.value.EnumObjectMapperTest;
 import cz.mg.entity.mapper.value.IntegerObjectMapperTest;
 import cz.mg.entity.mapper.value.StringObjectMapperTest;
 import cz.mg.entity.services.factories.EntityClassFactoryTest;
@@ -33,5 +34,6 @@ public @Test class AllTests {
         BooleanObjectMapperTest.main(args);
         IntegerObjectMapperTest.main(args);
         StringObjectMapperTest.main(args);
+        EnumObjectMapperTest.main(args);
     }
 }
