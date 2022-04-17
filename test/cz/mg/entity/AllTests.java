@@ -1,6 +1,8 @@
 package cz.mg.entity;
 
 import cz.mg.annotations.classes.Test;
+import cz.mg.entity.mapper.MapperTest;
+import cz.mg.entity.mapper.collection.ListObjectMapperTest;
 import cz.mg.entity.services.factories.EntityClassFactoryTest;
 import cz.mg.entity.services.factories.EntityFieldFactoryTest;
 import cz.mg.entity.services.validators.EntityClassValidatorTest;
@@ -22,5 +24,8 @@ public @Test class AllTests {
         EntityClassValidatorTest.main(args);
         EntityFieldValidatorTest.main(args);
         EntityInterfaceValidatorTest.main(args);
+
+        MapperTest.main(args);
+        ListObjectMapperTest.main(args);
     }
 }

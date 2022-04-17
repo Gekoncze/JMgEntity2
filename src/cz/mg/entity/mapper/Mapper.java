@@ -32,7 +32,7 @@ public @Utility class Mapper<T> {
             return null;
         }
 
-        if (cache.get(object) != null) {
+        if (cache.getOptional(object) != null) {
             return cache.get(object);
         }
 
@@ -48,8 +48,10 @@ public @Utility class Mapper<T> {
         elements.addLast(element);
         cache.set(object, id);
 
-        for (Object child : objectMapper.getFields(object)) {
-            element.getFields().addLast(map(elements, cache, child));
+        for (Object field : objectMapper.getFields(object)) {
+            element.getFields().addLast(
+                map(elements, cache, field)
+            );
         }
 
         return id;
@@ -69,7 +71,7 @@ public @Utility class Mapper<T> {
             return null;
         }
 
-        if (cache.get(id) != null) {
+        if (cache.getOptional(id) != null) {
             return cache.get(id);
         }
 
@@ -85,7 +87,9 @@ public @Utility class Mapper<T> {
 
         List<Object> fields = new List<>();
         for (Integer field : element.getFields()) {
-            fields.addLast(unmap(elements, cache, field));
+            fields.addLast(
+                unmap(elements, cache, field)
+            );
         }
         objectMapper.setFields(object, fields);
 

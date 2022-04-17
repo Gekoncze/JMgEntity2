@@ -8,6 +8,8 @@ import cz.mg.collections.list.List;
 import cz.mg.entity.utilities.EntityClass;
 import cz.mg.entity.utilities.EntityField;
 
+import java.util.Iterator;
+
 
 public @Utility class EntityObjectMapper implements ObjectMapper<Object> {
     private final @Mandatory @Part EntityClass entityClass;
@@ -42,10 +44,9 @@ public @Utility class EntityObjectMapper implements ObjectMapper<Object> {
 
     @Override
     public void setFields(@Mandatory Object object, @Mandatory List<Object> fieldValues) {
-        int i = 0;
+        Iterator<EntityField> fieldIterator = entityClass.getFields().iterator();
         for (Object fieldValue : fieldValues) {
-            entityClass.getFields().get(i).set(object, fieldValue);
-            i++;
+            fieldIterator.next().set(object, fieldValue);
         }
     }
 }
