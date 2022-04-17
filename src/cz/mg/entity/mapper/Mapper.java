@@ -10,6 +10,8 @@ import cz.mg.collections.map.Map;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public @Utility class Mapper<T> {
+    private static final int DEFAULT_CACHE_SIZE = 100;
+
     private final @Mandatory @Part List<ObjectMapper> objectMappers;
 
     public Mapper(@Mandatory List<ObjectMapper> objectMappers) {
@@ -18,8 +20,7 @@ public @Utility class Mapper<T> {
 
     public @Mandatory List<Element> map(@Optional T object) {
         List<Element> elements = new List<>();
-        Map<Object, Integer> cache = new Map<>(100);
-        map(elements, cache, object);
+        map(elements, new Map<>(DEFAULT_CACHE_SIZE), object);
         return elements;
     }
 
@@ -58,11 +59,10 @@ public @Utility class Mapper<T> {
     }
 
     public @Optional T unmap(@Mandatory List<Element> elements) {
-        Map<Integer, Object> cache = new Map<>(100);
         if (elements.isEmpty()) {
             return null;
         } else {
-            return (T) unmap(elements, cache, 0);
+            return (T) unmap(elements, new Map<>(DEFAULT_CACHE_SIZE), 0);
         }
     }
 

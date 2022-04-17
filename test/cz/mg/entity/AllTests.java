@@ -37,7 +37,7 @@ public @Test class AllTests {
         StringObjectMapperTest.main(args);
         EnumObjectMapperTest.main(args);
         EntityObjectMapperTest.main(args);
-        MapperTest.main(args);
         MapperFactoryTest.main(args);
+        MapperTest.main(args);
     }
 }
