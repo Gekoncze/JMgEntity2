@@ -3,6 +3,7 @@ package cz.mg.entity;
 import cz.mg.annotations.classes.Test;
 import cz.mg.entity.mapper.MapperTest;
 import cz.mg.entity.mapper.collection.ListObjectMapperTest;
+import cz.mg.entity.mapper.structure.EntityObjectMapperTest;
 import cz.mg.entity.mapper.value.BooleanObjectMapperTest;
 import cz.mg.entity.mapper.value.EnumObjectMapperTest;
 import cz.mg.entity.mapper.value.IntegerObjectMapperTest;
@@ -35,5 +36,6 @@ public @Test class AllTests {
         IntegerObjectMapperTest.main(args);
         StringObjectMapperTest.main(args);
         EnumObjectMapperTest.main(args);
+        EntityObjectMapperTest.main(args);
     }
 }

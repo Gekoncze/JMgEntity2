@@ -5,6 +5,7 @@ import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.collections.list.List;
 import cz.mg.entity.mapper.collection.ListObjectMapper;
+import cz.mg.entity.mapper.structure.EntityObjectMapper;
 import cz.mg.entity.mapper.value.BooleanObjectMapper;
 import cz.mg.entity.mapper.value.EnumObjectMapper;
 import cz.mg.entity.mapper.value.IntegerObjectMapper;

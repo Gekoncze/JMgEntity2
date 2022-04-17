@@ -1,10 +1,11 @@
-package cz.mg.entity.mapper;
+package cz.mg.entity.mapper.structure;
 
 import cz.mg.annotations.classes.Utility;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
 import cz.mg.annotations.storage.Part;
 import cz.mg.collections.list.List;
+import cz.mg.entity.mapper.ObjectMapper;
 import cz.mg.entity.utilities.EntityClass;
 import cz.mg.entity.utilities.EntityField;
 

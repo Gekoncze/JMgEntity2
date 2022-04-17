@@ -14,6 +14,11 @@ public @Entity class TestEntityClass {
     public TestEntityClass() {
     }
 
+    public TestEntityClass(String foo, String bar) {
+        this.foo = foo;
+        this.bar = bar;
+    }
+
     @Value
     public String getFoo() {
         return foo;
