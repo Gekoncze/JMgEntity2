@@ -59,7 +59,11 @@ public @Utility class Mapper<T> {
 
     public @Optional T unmap(@Mandatory List<Element> elements) {
         Map<Integer, Object> cache = new Map<>(100);
-        return (T) unmap(elements, cache, 0);
+        if (elements.isEmpty()) {
+            return null;
+        } else {
+            return (T) unmap(elements, cache, 0);
+        }
     }
 
     private @Optional Object unmap(

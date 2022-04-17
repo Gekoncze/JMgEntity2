@@ -15,9 +15,15 @@ public @Test class ListObjectMapperTest {
         System.out.print("Running " + ListObjectMapperTest.class.getSimpleName() + " ... ");
 
         ListObjectMapperTest test = new ListObjectMapperTest();
+        test.testNullMapping();
         test.testMapping();
 
         System.out.println("OK");
+    }
+
+    private void testNullMapping() {
+        Mapper<List<Integer>> mapper = new Mapper<>(new List<>(new ListObjectMapper(), new IntegerObjectMapper()));
+        Assert.assertNull(mapper.unmap(mapper.map(null)));
     }
 
     private void testMapping() {
