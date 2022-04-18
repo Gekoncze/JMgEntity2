@@ -2,8 +2,6 @@ package cz.mg.entity.mapper.value;
 
 import cz.mg.annotations.classes.Utility;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.annotations.requirement.Optional;
-import cz.mg.entity.mapper.value.ValueObjectMapper;
 
 import java.lang.reflect.Method;
 
@@ -22,7 +20,7 @@ public @Utility class EnumObjectMapper<T extends Enum> implements ValueObjectMap
     }
 
     @Override
-    public @Mandatory T create(@Optional String value) {
+    public @Mandatory T create(@Mandatory String value) {
         try {
             Method factory = clazz.getMethod("valueOf", String.class);
             return (T) factory.invoke(null, value);
@@ -32,7 +30,7 @@ public @Utility class EnumObjectMapper<T extends Enum> implements ValueObjectMap
     }
 
     @Override
-    public @Optional String getValue(@Mandatory T object) {
+    public @Mandatory String getValue(@Mandatory T object) {
         return object.name();
     }
 }

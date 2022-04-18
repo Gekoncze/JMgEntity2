@@ -2,7 +2,6 @@ package cz.mg.entity.mapper.structure;
 
 import cz.mg.annotations.classes.Utility;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.annotations.requirement.Optional;
 import cz.mg.annotations.storage.Part;
 import cz.mg.collections.list.List;
 import cz.mg.entity.mapper.ObjectMapper;
@@ -25,13 +24,13 @@ public @Utility class EntityObjectMapper implements ObjectMapper<Object> {
     }
 
     @Override
-    public @Mandatory Object create(@Optional String value) {
+    public @Mandatory Object create(@Mandatory String value) {
         return entityClass.newInstance();
     }
 
     @Override
-    public @Optional String getValue(@Mandatory Object object) {
-        return null;
+    public @Mandatory String getValue(@Mandatory Object object) {
+        return "";
     }
 
     @Override

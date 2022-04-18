@@ -8,11 +8,11 @@ import cz.mg.entity.mapper.ObjectMapper;
 
 public @Utility interface ValueObjectMapper<T> extends ObjectMapper<T> {
     @Override
-    default @Mandatory List<Object> getFields(@Mandatory T object){
+    default @Mandatory List<Object> getFields(@Mandatory T object) {
         return new List<>();
     }
 
     @Override
-    default void setFields(@Mandatory T object, @Mandatory List<Object> fields){
+    default void setFields(@Mandatory T object, @Mandatory List<Object> fields) {
     }
 }

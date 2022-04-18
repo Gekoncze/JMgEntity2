@@ -1,9 +1,6 @@
 package cz.mg.entity.mapper.value;
 
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.annotations.requirement.Optional;
-
-import java.util.Objects;
 
 
 public class StringObjectMapper implements ValueObjectMapper<String> {
@@ -13,12 +10,12 @@ public class StringObjectMapper implements ValueObjectMapper<String> {
     }
 
     @Override
-    public @Mandatory String create(@Optional String value) {
-        return Objects.requireNonNull(value);
+    public @Mandatory String create(@Mandatory String value) {
+        return value;
     }
 
     @Override
-    public @Optional String getValue(@Mandatory String object) {
+    public @Mandatory String getValue(@Mandatory String object) {
         return object;
     }
 }

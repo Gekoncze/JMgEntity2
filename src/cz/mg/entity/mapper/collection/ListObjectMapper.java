@@ -1,7 +1,6 @@
 package cz.mg.entity.mapper.collection;
 
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.annotations.requirement.Optional;
 import cz.mg.collections.list.List;
 import cz.mg.entity.mapper.ObjectMapper;
 
@@ -14,13 +13,13 @@ public class ListObjectMapper implements ObjectMapper<List> {
     }
 
     @Override
-    public @Mandatory List create(@Optional String value) {
+    public @Mandatory List create(@Mandatory String value) {
         return new List();
     }
 
     @Override
-    public @Optional String getValue(@Mandatory List object) {
-        return null;
+    public @Mandatory String getValue(@Mandatory List object) {
+        return "";
     }
 
     @Override
