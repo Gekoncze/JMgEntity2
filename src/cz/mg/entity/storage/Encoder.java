@@ -24,6 +24,9 @@ public @Service class Encoder {
         return instance;
     }
 
+    private Encoder() {
+    }
+
     public byte[] encodeInteger(@Mandatory Integer value) {
         return ByteBuffer.allocate(Integer.BYTES).order(BYTE_ORDER).putInt(value).array();
     }
