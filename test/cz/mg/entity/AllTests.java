@@ -15,6 +15,7 @@ import cz.mg.entity.services.validators.EntityClassValidatorTest;
 import cz.mg.entity.services.validators.EntityFieldValidatorTest;
 import cz.mg.entity.services.validators.EntityInterfaceValidatorTest;
 import cz.mg.entity.storage.EncoderTest;
+import cz.mg.entity.storage.StorageTest;
 import cz.mg.entity.utilities.EntityClassTest;
 import cz.mg.entity.utilities.EntityFieldTest;
 import cz.mg.entity.utilities.EntityProxyTest;
@@ -42,5 +43,6 @@ public @Test class AllTests {
         MapperTest.main(args);
 
         EncoderTest.main(args);
+        StorageTest.main(args);
     }
 }

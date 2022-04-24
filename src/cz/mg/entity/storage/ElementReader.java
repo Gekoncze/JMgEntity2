@@ -54,7 +54,7 @@ public @Service class ElementReader {
             throw new IllegalArgumentException("Wrong file type. Expected '" + FileMetadata.CURRENT_TYPE + "'.");
         }
 
-        if (Objects.equals(metadata.getVersion(), FileMetadata.CURRENT_VERSION)) {
+        if (!Objects.equals(metadata.getVersion(), FileMetadata.CURRENT_VERSION)) {
             throw new IllegalArgumentException("Wrong file version. Expected '" + FileMetadata.CURRENT_VERSION + "', but got '" + metadata.getVersion() + "'.");
         }
     }
