@@ -5,10 +5,7 @@ import cz.mg.entity.mapper.MapperFactoryTest;
 import cz.mg.entity.mapper.MapperTest;
 import cz.mg.entity.mapper.collection.ListObjectMapperTest;
 import cz.mg.entity.mapper.structure.EntityObjectMapperTest;
-import cz.mg.entity.mapper.value.BooleanObjectMapperTest;
-import cz.mg.entity.mapper.value.EnumObjectMapperTest;
-import cz.mg.entity.mapper.value.IntegerObjectMapperTest;
-import cz.mg.entity.mapper.value.StringObjectMapperTest;
+import cz.mg.entity.mapper.value.*;
 import cz.mg.entity.services.factories.EntityClassFactoryTest;
 import cz.mg.entity.services.factories.EntityFieldFactoryTest;
 import cz.mg.entity.services.validators.EntityClassValidatorTest;
@@ -35,9 +32,13 @@ public @Test class AllTests {
 
         ListObjectMapperTest.main(args);
         BooleanObjectMapperTest.main(args);
-        IntegerObjectMapperTest.main(args);
-        StringObjectMapperTest.main(args);
+        ByteObjectMapperTest.main(args);
+        DoubleObjectMapperTest.main(args);
         EnumObjectMapperTest.main(args);
+        FloatObjectMapperTest.main(args);
+        IntegerObjectMapperTest.main(args);
+        LongObjectMapperTest.main(args);
+        StringObjectMapperTest.main(args);
         EntityObjectMapperTest.main(args);
         MapperFactoryTest.main(args);
         MapperTest.main(args);
